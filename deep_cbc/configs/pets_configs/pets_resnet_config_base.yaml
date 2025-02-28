@@ -1,0 +1,41 @@
+dataset: 'PETS'
+validation_size: 0.0
+net: 'resnet50'
+batch_size: 40
+batch_size_pretrain: 80
+epochs_net: 144
+optimizer: 'Adam'
+lr: 0.0000625
+lr_block: 0.0000625
+lr_net: 0.0000625
+lr_classifier_fine_tune: 0.000125
+weight_decay: 0.0
+disable_cuda: False
+log_dir: ''
+num_features: 0
+image_size: 224
+state_dict_dir_net: ''
+epochs_fine_tune: 96
+dir_for_saving_images: ''
+disable_pretrained: False
+epochs_pretrain: 14
+weighted_loss: False
+seed: 1
+gpu_ids: '0'
+num_workers: 8
+bias: False
+num_classes: 37
+head_type: 'cbc_head'
+detect_prob_flag: False
+notebook: False
+margin: 0.025
+visualize_data: False
+reasoning_type: "positive"
+wshape: 0
+eps: 1e-3
+#------------------------- Hydra Config ------------------------#
+hydra:
+  job:
+    name: ${net}_${head_type}_${dataset}_seed_${seed}
+  run:
+    dir: outputs/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
